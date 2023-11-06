@@ -86,7 +86,7 @@ const MemberArea = () => {
                     <Typography>{course.description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="secondary">
                       Ver curso
                     </Button>
                   </CardActions>
