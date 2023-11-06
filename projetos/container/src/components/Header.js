@@ -74,7 +74,7 @@ export default function Header({ isSignedIn, onSignOut }) {
         <Toolbar className={classes.toolbar}>
           <Typography
             variant="h6"
-            color="inherit"
+            color="primary"
             noWrap
             component={RouterLink}
             to="/"
