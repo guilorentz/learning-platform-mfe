@@ -1,13 +1,13 @@
-import { createApp } from 'vue';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import MemberArea from './components/MemberArea';
 
 const mount = (el) => {
-  const app = createApp(MemberArea);
-  app.mount(el);
+  ReactDOM.render(<MemberArea />, el);
 };
 
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_memberArea-dev-root');
+  const devRoot = document.querySelector('#_member-area-dev-root');
 
   if (devRoot) {
     mount(devRoot);

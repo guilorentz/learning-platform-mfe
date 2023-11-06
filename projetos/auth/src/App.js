@@ -1,38 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { createMemoryHistory, createBrowserHistory } from 'history';
-import App from './App';
+import { Switch, Route, Router } from 'react-router-dom';
+import {
+  StylesProvider,
+  createGenerateClassName,
+} from '@material-ui/core/styles';
 
-const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
-  const history =
-    defaultHistory ||
-    createMemoryHistory({
-      initialEntries: [initialPath],
-    });
+import Signin from './components/Signin';
+import Signup from './components/Signup';
 
-  if (onNavigate) {
-    history.listen(onNavigate);
-  }
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'au',
+});
 
-  ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
-
-  return {
-    onParentNavigate({ pathname: nextPathname }) {
-      const { pathname } = history.location;
-
-      if (pathname !== nextPathname) {
-        history.push(nextPathname);
-      }
-    },
-  };
+export default ({ history, onSignIn }) => {
+  return (
+    <div>
+      <StylesProvider generateClassName={generateClassName}>
+        <Router history={history}>
+          <Switch>
+            <Route path="/auth/signin">
+              <Signin onSignIn={onSignIn} />
+            </Route>
+            <Route path="/auth/signup">
+              <Signup onSignIn={onSignIn} />
+            </Route>
+          </Switch>
+        </Router>
+      </StylesProvider>
+    </div>
+  );
 };
-
-if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_auth-dev-root');
-
-  if (devRoot) {
-    mount(devRoot, { defaultHistory: createBrowserHistory() });
-  }
-}
-
-export { mount };
