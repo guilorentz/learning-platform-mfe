@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'packages/memberArea/**'
+      - 'projetos/memberArea/**'
 
 defaults:
   run:
-    working-directory: packages/memberArea
+    working-directory: projetos/memberArea
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2

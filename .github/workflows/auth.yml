@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'packages/auth/**'
+      - 'projetos/auth/**'
 
 defaults:
   run:
-    working-directory: packages/auth
+    working-directory: projetos/auth
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2

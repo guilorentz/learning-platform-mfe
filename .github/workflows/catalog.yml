@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths:
-      - 'packages/catalog/**'
+      - 'projetos/catalog/**'
 
 defaults:
   run:
-    working-directory: packages/catalog
+    working-directory: projetos/catalog
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
